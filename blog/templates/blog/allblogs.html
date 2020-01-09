@@ -1,9 +1,7 @@
 
 <!doctype html>
 <html lang="en">
-
   <head>
-    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -62,10 +60,7 @@
                   <a class="nav-link" href="#">LinkedIn</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{%static 'Resume1104.pdf'%}">Resume</a>
+                    <a class="nav-link active" href="#">Blog</a>
                   </li>
               </ul>
             </div>
@@ -74,37 +69,21 @@
 
 <main role="main">
 
-  <section class="jumbotron text-center">
     <div class="container">
-      <h1>Hi, I'm Junkang</h1>
-      <p class="lead text-muted">I'm a Computer Science Undergrad from the University of Rochester.</p>
-      <p>
-        <a href="mailto:jug8@u.rochester.edu" class="btn btn-primary my-2">Get in touch</a>
-      </p>
+    <h1 class="text-center pt-2">Blog</h1>
+    <br />
+    <br />
+    <h2>Latest Posts</h2>
+    {% for x in blogs.all %}
+    <a href=""> <h3 >{{x.title}}</h3> </a>
+    {{x.date}}
+    <br />
+    <img class="img-fluid" src="{{x.image.url}}" width=150 height=150>
+    <br />
+    <p>{{x.summary}}</p>
+    {% endfor %}
     </div>
-  </section>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-
-        {% for x in projects.all %}
-
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{x.image.url}}" />
-            <div class="card-body">
-              <p class="card-text">{{x.summary}}</p>
-            </div>
-          </div>
-        </div>
-
-        {% endfor %}
-
-      </div>
-    </div>
-  </div>
 
 </main>
 
